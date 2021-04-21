@@ -577,6 +577,10 @@ export type SitePlugin = Node & {
 };
 
 export type SitePluginPluginOptions = {
+  sourceMap?: Maybe<Scalars['Boolean']>;
+  autoLabel?: Maybe<Scalars['String']>;
+  labelFormat?: Maybe<Scalars['String']>;
+  cssPropOptimization?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   base64Width?: Maybe<Scalars['Int']>;
@@ -599,6 +603,9 @@ export type SitePluginPluginOptions = {
   jsxPragma?: Maybe<Scalars['String']>;
   allExtensions?: Maybe<Scalars['Boolean']>;
   fileName?: Maybe<Scalars['String']>;
+  stages?: Maybe<Array<Maybe<Scalars['String']>>>;
+  extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  exclude?: Maybe<Array<Maybe<Scalars['String']>>>;
   pathCheck?: Maybe<Scalars['Boolean']>;
 };
 
@@ -1732,6 +1739,10 @@ export type SitePluginFilterInput = {
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+  sourceMap?: Maybe<BooleanQueryOperatorInput>;
+  autoLabel?: Maybe<StringQueryOperatorInput>;
+  labelFormat?: Maybe<StringQueryOperatorInput>;
+  cssPropOptimization?: Maybe<BooleanQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   base64Width?: Maybe<IntQueryOperatorInput>;
@@ -1754,6 +1765,9 @@ export type SitePluginPluginOptionsFilterInput = {
   jsxPragma?: Maybe<StringQueryOperatorInput>;
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
   fileName?: Maybe<StringQueryOperatorInput>;
+  stages?: Maybe<StringQueryOperatorInput>;
+  extensions?: Maybe<StringQueryOperatorInput>;
+  exclude?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -1957,6 +1971,10 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___resolve'
   | 'pluginCreator___name'
   | 'pluginCreator___version'
+  | 'pluginCreator___pluginOptions___sourceMap'
+  | 'pluginCreator___pluginOptions___autoLabel'
+  | 'pluginCreator___pluginOptions___labelFormat'
+  | 'pluginCreator___pluginOptions___cssPropOptimization'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___base64Width'
@@ -1979,6 +1997,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___pluginOptions___allExtensions'
   | 'pluginCreator___pluginOptions___fileName'
+  | 'pluginCreator___pluginOptions___stages'
+  | 'pluginCreator___pluginOptions___extensions'
+  | 'pluginCreator___pluginOptions___exclude'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
@@ -2448,6 +2469,10 @@ export type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
+  | 'pluginOptions___sourceMap'
+  | 'pluginOptions___autoLabel'
+  | 'pluginOptions___labelFormat'
+  | 'pluginOptions___cssPropOptimization'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
   | 'pluginOptions___base64Width'
@@ -2470,6 +2495,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___jsxPragma'
   | 'pluginOptions___allExtensions'
   | 'pluginOptions___fileName'
+  | 'pluginOptions___stages'
+  | 'pluginOptions___extensions'
+  | 'pluginOptions___exclude'
   | 'pluginOptions___pathCheck'
   | 'nodeAPIs'
   | 'browserAPIs'

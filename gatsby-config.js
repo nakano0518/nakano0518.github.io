@@ -41,6 +41,14 @@ module.exports = {
         fileName: `types/graphql-types.d.ts`
       }
     },
-    'gatsby-plugin-eslint'
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        stages: ['develop'],
+        extensions: ['js', 'jsx'],
+        exclude: ['node_modules', '.cache', 'public'],
+        // Any eslint-webpack-plugin options below
+      }
+    }
   ],
 }
