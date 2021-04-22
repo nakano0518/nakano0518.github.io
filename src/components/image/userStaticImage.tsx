@@ -31,7 +31,7 @@ const UserImage: React.FC = () => {
     return (
         <div className={imageContainer}>
             <StaticImage 
-                src="../../images/profileImage.jpg"
+                src="../../images/profile-image.jpg"
                 className={imageStyle}
                 alt="userImage" 
             />

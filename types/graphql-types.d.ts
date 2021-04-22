@@ -71,6 +71,10 @@ export type File = Node & {
   childrenImageSharp?: Maybe<Array<Maybe<ImageSharp>>>;
   /** Returns the first child node of type ImageSharp or null if there are no children of given type on this node */
   childImageSharp?: Maybe<ImageSharp>;
+  /** Returns all children nodes filtered by type PortfoliosJson */
+  childrenPortfoliosJson?: Maybe<Array<Maybe<PortfoliosJson>>>;
+  /** Returns the first child node of type PortfoliosJson or null if there are no children of given type on this node */
+  childPortfoliosJson?: Maybe<PortfoliosJson>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
   children: Array<Node>;
@@ -544,6 +548,23 @@ export type ImageSharpResize = {
   originalName?: Maybe<Scalars['String']>;
 };
 
+export type PortfoliosJson = Node & {
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  tag?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  abstract?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  imageUrl?: Maybe<Scalars['String']>;
+  githubRepositoryUrl?: Maybe<Scalars['String']>;
+  techType?: Maybe<Scalars['String']>;
+  supportEmail?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['String']>;
+};
+
 export type SiteBuildMetadata = Node & {
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -581,12 +602,12 @@ export type SitePluginPluginOptions = {
   autoLabel?: Maybe<Scalars['String']>;
   labelFormat?: Maybe<Scalars['String']>;
   cssPropOptimization?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  path?: Maybe<Scalars['String']>;
   base64Width?: Maybe<Scalars['Int']>;
   stripMetadata?: Maybe<Scalars['Boolean']>;
   defaultQuality?: Maybe<Scalars['Int']>;
   failOnError?: Maybe<Scalars['Boolean']>;
+  name?: Maybe<Scalars['String']>;
+  path?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   background_color?: Maybe<Scalars['String']>;
@@ -647,6 +668,8 @@ export type Query = {
   allSitePage: SitePageConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
+  portfoliosJson?: Maybe<PortfoliosJson>;
+  allPortfoliosJson: PortfoliosJsonConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
   allSiteBuildMetadata: SiteBuildMetadataConnection;
   sitePlugin?: Maybe<SitePlugin>;
@@ -691,6 +714,8 @@ export type QueryFileArgs = {
   publicURL?: Maybe<StringQueryOperatorInput>;
   childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
+  childrenPortfoliosJson?: Maybe<PortfoliosJsonFilterListInput>;
+  childPortfoliosJson?: Maybe<PortfoliosJsonFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -818,6 +843,32 @@ export type QueryImageSharpArgs = {
 export type QueryAllImageSharpArgs = {
   filter?: Maybe<ImageSharpFilterInput>;
   sort?: Maybe<ImageSharpSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
+export type QueryPortfoliosJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  tag?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  abstract?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  imageUrl?: Maybe<StringQueryOperatorInput>;
+  githubRepositoryUrl?: Maybe<StringQueryOperatorInput>;
+  techType?: Maybe<StringQueryOperatorInput>;
+  supportEmail?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<StringQueryOperatorInput>;
+};
+
+
+export type QueryAllPortfoliosJsonArgs = {
+  filter?: Maybe<PortfoliosJsonFilterInput>;
+  sort?: Maybe<PortfoliosJsonSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -1001,6 +1052,27 @@ export type BooleanQueryOperatorInput = {
   ne?: Maybe<Scalars['Boolean']>;
   in?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   nin?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
+};
+
+export type PortfoliosJsonFilterListInput = {
+  elemMatch?: Maybe<PortfoliosJsonFilterInput>;
+};
+
+export type PortfoliosJsonFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  tag?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  abstract?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  imageUrl?: Maybe<StringQueryOperatorInput>;
+  githubRepositoryUrl?: Maybe<StringQueryOperatorInput>;
+  techType?: Maybe<StringQueryOperatorInput>;
+  supportEmail?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<StringQueryOperatorInput>;
 };
 
 export type FileConnection = {
@@ -1216,6 +1288,103 @@ export type FileFieldsEnum =
   | 'childImageSharp___internal___mediaType'
   | 'childImageSharp___internal___owner'
   | 'childImageSharp___internal___type'
+  | 'childrenPortfoliosJson'
+  | 'childrenPortfoliosJson___id'
+  | 'childrenPortfoliosJson___parent___id'
+  | 'childrenPortfoliosJson___parent___parent___id'
+  | 'childrenPortfoliosJson___parent___parent___children'
+  | 'childrenPortfoliosJson___parent___children'
+  | 'childrenPortfoliosJson___parent___children___id'
+  | 'childrenPortfoliosJson___parent___children___children'
+  | 'childrenPortfoliosJson___parent___internal___content'
+  | 'childrenPortfoliosJson___parent___internal___contentDigest'
+  | 'childrenPortfoliosJson___parent___internal___description'
+  | 'childrenPortfoliosJson___parent___internal___fieldOwners'
+  | 'childrenPortfoliosJson___parent___internal___ignoreType'
+  | 'childrenPortfoliosJson___parent___internal___mediaType'
+  | 'childrenPortfoliosJson___parent___internal___owner'
+  | 'childrenPortfoliosJson___parent___internal___type'
+  | 'childrenPortfoliosJson___children'
+  | 'childrenPortfoliosJson___children___id'
+  | 'childrenPortfoliosJson___children___parent___id'
+  | 'childrenPortfoliosJson___children___parent___children'
+  | 'childrenPortfoliosJson___children___children'
+  | 'childrenPortfoliosJson___children___children___id'
+  | 'childrenPortfoliosJson___children___children___children'
+  | 'childrenPortfoliosJson___children___internal___content'
+  | 'childrenPortfoliosJson___children___internal___contentDigest'
+  | 'childrenPortfoliosJson___children___internal___description'
+  | 'childrenPortfoliosJson___children___internal___fieldOwners'
+  | 'childrenPortfoliosJson___children___internal___ignoreType'
+  | 'childrenPortfoliosJson___children___internal___mediaType'
+  | 'childrenPortfoliosJson___children___internal___owner'
+  | 'childrenPortfoliosJson___children___internal___type'
+  | 'childrenPortfoliosJson___internal___content'
+  | 'childrenPortfoliosJson___internal___contentDigest'
+  | 'childrenPortfoliosJson___internal___description'
+  | 'childrenPortfoliosJson___internal___fieldOwners'
+  | 'childrenPortfoliosJson___internal___ignoreType'
+  | 'childrenPortfoliosJson___internal___mediaType'
+  | 'childrenPortfoliosJson___internal___owner'
+  | 'childrenPortfoliosJson___internal___type'
+  | 'childrenPortfoliosJson___tag'
+  | 'childrenPortfoliosJson___title'
+  | 'childrenPortfoliosJson___abstract'
+  | 'childrenPortfoliosJson___description'
+  | 'childrenPortfoliosJson___url'
+  | 'childrenPortfoliosJson___imageUrl'
+  | 'childrenPortfoliosJson___githubRepositoryUrl'
+  | 'childrenPortfoliosJson___techType'
+  | 'childrenPortfoliosJson___supportEmail'
+  | 'childrenPortfoliosJson___createdAt'
+  | 'childPortfoliosJson___id'
+  | 'childPortfoliosJson___parent___id'
+  | 'childPortfoliosJson___parent___parent___id'
+  | 'childPortfoliosJson___parent___parent___children'
+  | 'childPortfoliosJson___parent___children'
+  | 'childPortfoliosJson___parent___children___id'
+  | 'childPortfoliosJson___parent___children___children'
+  | 'childPortfoliosJson___parent___internal___content'
+  | 'childPortfoliosJson___parent___internal___contentDigest'
+  | 'childPortfoliosJson___parent___internal___description'
+  | 'childPortfoliosJson___parent___internal___fieldOwners'
+  | 'childPortfoliosJson___parent___internal___ignoreType'
+  | 'childPortfoliosJson___parent___internal___mediaType'
+  | 'childPortfoliosJson___parent___internal___owner'
+  | 'childPortfoliosJson___parent___internal___type'
+  | 'childPortfoliosJson___children'
+  | 'childPortfoliosJson___children___id'
+  | 'childPortfoliosJson___children___parent___id'
+  | 'childPortfoliosJson___children___parent___children'
+  | 'childPortfoliosJson___children___children'
+  | 'childPortfoliosJson___children___children___id'
+  | 'childPortfoliosJson___children___children___children'
+  | 'childPortfoliosJson___children___internal___content'
+  | 'childPortfoliosJson___children___internal___contentDigest'
+  | 'childPortfoliosJson___children___internal___description'
+  | 'childPortfoliosJson___children___internal___fieldOwners'
+  | 'childPortfoliosJson___children___internal___ignoreType'
+  | 'childPortfoliosJson___children___internal___mediaType'
+  | 'childPortfoliosJson___children___internal___owner'
+  | 'childPortfoliosJson___children___internal___type'
+  | 'childPortfoliosJson___internal___content'
+  | 'childPortfoliosJson___internal___contentDigest'
+  | 'childPortfoliosJson___internal___description'
+  | 'childPortfoliosJson___internal___fieldOwners'
+  | 'childPortfoliosJson___internal___ignoreType'
+  | 'childPortfoliosJson___internal___mediaType'
+  | 'childPortfoliosJson___internal___owner'
+  | 'childPortfoliosJson___internal___type'
+  | 'childPortfoliosJson___tag'
+  | 'childPortfoliosJson___title'
+  | 'childPortfoliosJson___abstract'
+  | 'childPortfoliosJson___description'
+  | 'childPortfoliosJson___url'
+  | 'childPortfoliosJson___imageUrl'
+  | 'childPortfoliosJson___githubRepositoryUrl'
+  | 'childPortfoliosJson___techType'
+  | 'childPortfoliosJson___supportEmail'
+  | 'childPortfoliosJson___createdAt'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -1349,6 +1518,8 @@ export type FileFilterInput = {
   publicURL?: Maybe<StringQueryOperatorInput>;
   childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
+  childrenPortfoliosJson?: Maybe<PortfoliosJsonFilterListInput>;
+  childPortfoliosJson?: Maybe<PortfoliosJsonFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
@@ -1743,12 +1914,12 @@ export type SitePluginPluginOptionsFilterInput = {
   autoLabel?: Maybe<StringQueryOperatorInput>;
   labelFormat?: Maybe<StringQueryOperatorInput>;
   cssPropOptimization?: Maybe<BooleanQueryOperatorInput>;
-  name?: Maybe<StringQueryOperatorInput>;
-  path?: Maybe<StringQueryOperatorInput>;
   base64Width?: Maybe<IntQueryOperatorInput>;
   stripMetadata?: Maybe<BooleanQueryOperatorInput>;
   defaultQuality?: Maybe<IntQueryOperatorInput>;
   failOnError?: Maybe<BooleanQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  path?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   background_color?: Maybe<StringQueryOperatorInput>;
@@ -1975,12 +2146,12 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___autoLabel'
   | 'pluginCreator___pluginOptions___labelFormat'
   | 'pluginCreator___pluginOptions___cssPropOptimization'
-  | 'pluginCreator___pluginOptions___name'
-  | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___base64Width'
   | 'pluginCreator___pluginOptions___stripMetadata'
   | 'pluginCreator___pluginOptions___defaultQuality'
   | 'pluginCreator___pluginOptions___failOnError'
+  | 'pluginCreator___pluginOptions___name'
+  | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___background_color'
@@ -2211,6 +2382,145 @@ export type ImageSharpGroupConnection = {
 
 export type ImageSharpSortInput = {
   fields?: Maybe<Array<Maybe<ImageSharpFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type PortfoliosJsonConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<PortfoliosJsonEdge>;
+  nodes: Array<PortfoliosJson>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<PortfoliosJsonGroupConnection>;
+};
+
+
+export type PortfoliosJsonConnectionDistinctArgs = {
+  field: PortfoliosJsonFieldsEnum;
+};
+
+
+export type PortfoliosJsonConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: PortfoliosJsonFieldsEnum;
+};
+
+export type PortfoliosJsonEdge = {
+  next?: Maybe<PortfoliosJson>;
+  node: PortfoliosJson;
+  previous?: Maybe<PortfoliosJson>;
+};
+
+export type PortfoliosJsonFieldsEnum =
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'tag'
+  | 'title'
+  | 'abstract'
+  | 'description'
+  | 'url'
+  | 'imageUrl'
+  | 'githubRepositoryUrl'
+  | 'techType'
+  | 'supportEmail'
+  | 'createdAt';
+
+export type PortfoliosJsonGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<PortfoliosJsonEdge>;
+  nodes: Array<PortfoliosJson>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type PortfoliosJsonSortInput = {
+  fields?: Maybe<Array<Maybe<PortfoliosJsonFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
@@ -2473,12 +2783,12 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___autoLabel'
   | 'pluginOptions___labelFormat'
   | 'pluginOptions___cssPropOptimization'
-  | 'pluginOptions___name'
-  | 'pluginOptions___path'
   | 'pluginOptions___base64Width'
   | 'pluginOptions___stripMetadata'
   | 'pluginOptions___defaultQuality'
   | 'pluginOptions___failOnError'
+  | 'pluginOptions___name'
+  | 'pluginOptions___path'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
   | 'pluginOptions___background_color'
@@ -2533,6 +2843,11 @@ export type SitePluginSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MyQueryQuery = { allImageSharp: { edges: Array<{ node: { fixed?: Maybe<Pick<ImageSharpFixed, 'src'>> } }> } };
+
 export type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2542,6 +2857,11 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+
+export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_2_Query = { allPortfoliosJson: { edges: Array<{ node: Pick<PortfoliosJson, 'id' | 'abstract' | 'createdAt' | 'githubRepositoryUrl' | 'imageUrl' | 'supportEmail' | 'tag' | 'techType' | 'title' | 'url'> }> } };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

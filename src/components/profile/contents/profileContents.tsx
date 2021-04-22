@@ -9,6 +9,7 @@ const containerStyle = css`
 const subContainerStyle = css`
     display: inline-block;
     marginTop: 2rem;
+    padding: 0 10%;
 `;
 const contentStyle = css`
     display: inline-block;
@@ -20,7 +21,7 @@ const contentStyle = css`
 const ProfileContents: React.FC = () => {
     return (
             <div className={containerStyle}>
-                <h1 className={contentStyle}> Taich Nakano </h1>
+                <h1 className={contentStyle}> Taichi Nakano </h1>
                 <h2 className={contentStyle}> Web developper</h2>
                 <div className={subContainerStyle}>
                     <h3 className={contentStyle}>skills</h3>

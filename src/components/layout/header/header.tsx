@@ -1,5 +1,4 @@
 import * as React from "react"
-import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
 interface HeaderProps {
@@ -9,7 +8,7 @@ interface HeaderProps {
 const Header = ({ siteTitle }: HeaderProps) => (
   <header
     style={{
-      background: `rebeccapurple`,
+      background: `#393e42`,
       marginBottom: `1.45rem`,
     }}
   >
