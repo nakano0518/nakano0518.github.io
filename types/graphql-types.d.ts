@@ -293,9 +293,30 @@ export type SitePage = Node & {
   children: Array<Node>;
   internal: Internal;
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>;
+  context?: Maybe<SitePageContext>;
   pluginCreator?: Maybe<SitePlugin>;
   pluginCreatorId?: Maybe<Scalars['String']>;
   componentPath?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContext = {
+  portfolio?: Maybe<SitePageContextPortfolio>;
+  staticImageUrls?: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+export type SitePageContextPortfolio = {
+  id?: Maybe<Scalars['String']>;
+  abstract?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  githubRepositoryUrl?: Maybe<Scalars['String']>;
+  imageUrl?: Maybe<Scalars['String']>;
+  subImageUrl?: Maybe<Array<Maybe<Scalars['String']>>>;
+  supportEmail?: Maybe<Scalars['String']>;
+  tag?: Maybe<Scalars['String']>;
+  techType?: Maybe<Array<Maybe<Scalars['String']>>>;
+  title?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
 };
 
 export type ImageFormat =
@@ -559,8 +580,9 @@ export type PortfoliosJson = Node & {
   description?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   imageUrl?: Maybe<Scalars['String']>;
+  subImageUrl?: Maybe<Array<Maybe<Scalars['String']>>>;
   githubRepositoryUrl?: Maybe<Scalars['String']>;
-  techType?: Maybe<Scalars['String']>;
+  techType?: Maybe<Array<Maybe<Scalars['String']>>>;
   supportEmail?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['String']>;
 };
@@ -813,6 +835,7 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -859,6 +882,7 @@ export type QueryPortfoliosJsonArgs = {
   description?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
   imageUrl?: Maybe<StringQueryOperatorInput>;
+  subImageUrl?: Maybe<StringQueryOperatorInput>;
   githubRepositoryUrl?: Maybe<StringQueryOperatorInput>;
   techType?: Maybe<StringQueryOperatorInput>;
   supportEmail?: Maybe<StringQueryOperatorInput>;
@@ -1069,6 +1093,7 @@ export type PortfoliosJsonFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   url?: Maybe<StringQueryOperatorInput>;
   imageUrl?: Maybe<StringQueryOperatorInput>;
+  subImageUrl?: Maybe<StringQueryOperatorInput>;
   githubRepositoryUrl?: Maybe<StringQueryOperatorInput>;
   techType?: Maybe<StringQueryOperatorInput>;
   supportEmail?: Maybe<StringQueryOperatorInput>;
@@ -1333,6 +1358,7 @@ export type FileFieldsEnum =
   | 'childrenPortfoliosJson___description'
   | 'childrenPortfoliosJson___url'
   | 'childrenPortfoliosJson___imageUrl'
+  | 'childrenPortfoliosJson___subImageUrl'
   | 'childrenPortfoliosJson___githubRepositoryUrl'
   | 'childrenPortfoliosJson___techType'
   | 'childrenPortfoliosJson___supportEmail'
@@ -1381,6 +1407,7 @@ export type FileFieldsEnum =
   | 'childPortfoliosJson___description'
   | 'childPortfoliosJson___url'
   | 'childPortfoliosJson___imageUrl'
+  | 'childPortfoliosJson___subImageUrl'
   | 'childPortfoliosJson___githubRepositoryUrl'
   | 'childPortfoliosJson___techType'
   | 'childPortfoliosJson___supportEmail'
@@ -1893,6 +1920,26 @@ export type SiteSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type SitePageContextFilterInput = {
+  portfolio?: Maybe<SitePageContextPortfolioFilterInput>;
+  staticImageUrls?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPortfolioFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  abstract?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<StringQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  githubRepositoryUrl?: Maybe<StringQueryOperatorInput>;
+  imageUrl?: Maybe<StringQueryOperatorInput>;
+  subImageUrl?: Maybe<StringQueryOperatorInput>;
+  supportEmail?: Maybe<StringQueryOperatorInput>;
+  tag?: Maybe<StringQueryOperatorInput>;
+  techType?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+};
+
 export type SitePluginFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2101,6 +2148,19 @@ export type SitePageFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
+  | 'context___portfolio___id'
+  | 'context___portfolio___abstract'
+  | 'context___portfolio___createdAt'
+  | 'context___portfolio___description'
+  | 'context___portfolio___githubRepositoryUrl'
+  | 'context___portfolio___imageUrl'
+  | 'context___portfolio___subImageUrl'
+  | 'context___portfolio___supportEmail'
+  | 'context___portfolio___tag'
+  | 'context___portfolio___techType'
+  | 'context___portfolio___title'
+  | 'context___portfolio___url'
+  | 'context___staticImageUrls'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -2214,6 +2274,7 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>;
+  context?: Maybe<SitePageContextFilterInput>;
   pluginCreator?: Maybe<SitePluginFilterInput>;
   pluginCreatorId?: Maybe<StringQueryOperatorInput>;
   componentPath?: Maybe<StringQueryOperatorInput>;
@@ -2505,6 +2566,7 @@ export type PortfoliosJsonFieldsEnum =
   | 'description'
   | 'url'
   | 'imageUrl'
+  | 'subImageUrl'
   | 'githubRepositoryUrl'
   | 'techType'
   | 'supportEmail'

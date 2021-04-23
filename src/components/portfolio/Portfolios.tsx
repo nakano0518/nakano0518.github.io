@@ -1,6 +1,6 @@
 import React from "react"
 import { css } from "@emotion/css";
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import Img from 'gatsby-image'
 import GraphQLImage from '../image/graphqlImage';
 import Card from '../styled/Card';
@@ -25,9 +25,10 @@ type Props = {
 const Portfolios: React.FC<Props> = (props: Props) => {
     return (
         <Card>
-            {/*<Img fixed={"src/images/"+props.imageUrl} />*/}
-            <GraphQLImage imageUrl={props.imageUrl} />
-            <p className={titleStyle}>{props.title}</p>
+            <Link to={`/portfolios/${props.id}/`}>
+                <GraphQLImage imageUrl={props.imageUrl} />
+            </Link>
+                <p className={titleStyle}>{props.title}</p>
         </Card>
     );      
     
