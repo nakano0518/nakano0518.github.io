@@ -10,7 +10,7 @@
         "benchmap-002.png",
         "benchmap-003.png"
     ],
-    "githubRepositoryUrl": "https://github.com/nakano0518/benchmap",
+    "githubRepositoryUrl": "https://github.com/nakano0518/benchmap-README",
     "techType": [
         "Ruby on Rails",
         "Slim",
@@ -32,12 +32,12 @@
     "title": "BenchMap for mobile",
     "abstract": "A mobile application that allows you to quickly and easily find and sit the location of benches.",
     "description": "BenchMap for mobile is my original mobile application introduced Google Maps.\nyou can quickly and easily find and sit the location of benches.",
-    "url": "https://github.com/nakano0518/benchmap-for-mobile",
+    "url": "https://apps.apple.com/jp/app/benchmap/id1564896818",
     "imageUrl": "benchmap4mobile-001.png",
     "subImageUrl": [
         
     ],
-    "githubRepositoryUrl": "https://github.com/nakano0518/benchmap-for-mobile",
+    "githubRepositoryUrl": "https://github.com/nakano0518/benchmap-for-mobile-README",
     "techType": [
         "ReactNative",
         "React",
